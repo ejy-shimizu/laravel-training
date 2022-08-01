@@ -153,6 +153,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'author' => '投稿者名',
+        'message' => 'メッセージ',
+    ],
 
 ];

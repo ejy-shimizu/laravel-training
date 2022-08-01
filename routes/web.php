@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TokenController;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -32,8 +33,8 @@ Route::get('test1', [TestController::class, 'test1']);
 
 Route::get('test2', [TestController::class, 'test2']);
 
-Route::post('/tokens/store', [TokenController::class, 'store']);
 Route::resources([
-    'tokens' => TokenController::class
+    'tokens' => TokenController::class,
+    'posts' => PostController::class
 ]);
 
