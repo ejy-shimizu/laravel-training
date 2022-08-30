@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div>
+    <div class="container">
         <h1>投稿　登録</h1>
         <h2>フォーム</h2>
         <form action="{{ route('posts.store') }}" method="POST">

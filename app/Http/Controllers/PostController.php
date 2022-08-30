@@ -14,10 +14,22 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all()->sortByDesc('post_date');;
-        return view('posts.index', ['posts' => $posts]);        
+        $search = $request->input('search');
+
+    // \DB::enableQueryLog();  // ロギングを有効化する
+        $wehere = array();
+        $orWhere = array();
+        if($search !== null){
+            $wehere = [['author', 'like', "%{$search}%"]];
+            $orWhere = [['message', 'like', "%{$search}%"]];
+        }
+
+        $posts = Post::where($wehere)->orWhere($orWhere)->orderByDesc('post_date')->paginate(5);
+    // dd(\DB::getQueryLog()); // ログを出力する
+ 
+        return view('posts.index', ['posts' => $posts, 'search' => $search]);        
     }
 
     /**

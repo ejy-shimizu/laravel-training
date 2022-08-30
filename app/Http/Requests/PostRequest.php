@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\MinBytes;
 use Illuminate\Foundation\Http\FormRequest;
+
 
 class PostRequest extends FormRequest
 {
@@ -24,8 +26,8 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'author' => ['required'],
-            'message' => ['required'],
+            'author' => ['required', 'min:20'],
+            'message' => ['required', new MinBytes(200)],
         ];
     }
 }

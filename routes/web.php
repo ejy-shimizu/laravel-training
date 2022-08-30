@@ -38,3 +38,10 @@ Route::resources([
     'posts' => PostController::class
 ]);
 
+// Route::post('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/', [PostController::class, 'index'])->name('posts.index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
